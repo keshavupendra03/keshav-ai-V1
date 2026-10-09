@@ -1,0 +1,16 @@
+{
+  "name": "Keshav AI API",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "8000": {
+      "label": "Keshav AI API",
+      "visibility": "public",
+      "onAutoForward": "silent"
+    }
+  },
+
+  "postCreateCommand": "pip install -r requirements.txt && playwright install --with-deps chromium",
+  "postStartCommand": "nohup uvicorn main:app --host 0.0.0.0 --port 8000 > /tmp/keshav_ai.log 2>&1 &"
+}
