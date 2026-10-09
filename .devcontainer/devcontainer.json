@@ -2,6 +2,10 @@
   "name": "Keshav AI API",
   "image": "mcr.microsoft.com/devcontainers/python:3.11",
 
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+
   "forwardPorts": [8000],
   "portsAttributes": {
     "8000": {
@@ -11,6 +15,6 @@
     }
   },
 
-  "postCreateCommand": "pip install -r requirements.txt && playwright install --with-deps chromium",
+  "postCreateCommand": "pip install -r requirements.txt && playwright install --with-deps chromium && npm install -g @anthropic-ai/claude-code",
   "postStartCommand": "nohup uvicorn main:app --host 0.0.0.0 --port 8000 > /tmp/keshav_ai.log 2>&1 &"
 }
